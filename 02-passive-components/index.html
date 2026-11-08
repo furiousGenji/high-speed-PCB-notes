@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>无源器件 · 学习笔记</title>
+<style>
+:root{--ink:#183c3b;--muted:#7e8c88;--line:#dce3de;--paper:#f7f8f3;--accent:#386c59}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:28px}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}a{color:inherit;text-decoration:none}header{height:82px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 5vw}.brand{display:flex;gap:12px;align-items:center;font-size:14px;font-weight:650}.mark{width:27px;height:27px;background:var(--ink);color:white;display:grid;place-items:center;border-radius:7px;font-size:17px}.edition{color:var(--muted);font:11px ui-monospace,monospace;letter-spacing:1.5px}main{max-width:1280px;margin:auto;padding:64px 5vw 32px}.eyebrow{font:11px ui-monospace,monospace;letter-spacing:2px;color:var(--accent)}.hero{display:flex;justify-content:space-between;align-items:end;padding-bottom:38px;gap:32px}h1{font-size:clamp(32px,4vw,52px);letter-spacing:-2px;font-weight:550;margin:17px 0 18px}.subtitle{font-size:14px;color:var(--muted);margin:0;line-height:1.7}.badge{font-size:11px;border:1px solid var(--line);border-radius:20px;padding:8px 12px;white-space:nowrap;color:var(--accent)}.badge:before{content:'';display:inline-block;width:5px;height:5px;background:#91a68e;border-radius:50%;margin-right:7px}nav{display:flex;gap:8px;border-top:1px solid var(--line);padding:20px 0 29px}nav a{padding:9px 17px;font-size:12px;border-radius:5px;transition:.2s}nav a:hover,nav a:focus-visible{background:#e5ede3;outline:2px solid #98b6a3}nav a[aria-selected="true"]{background:#e5ede3;color:var(--ink)}nav span{font:10px ui-monospace,monospace;color:var(--muted);margin-right:9px}.grid{display:block}.card[hidden]{display:none}.card{width:100%}.card{min-height:302px;border:1px solid var(--line);background:#fffefa;border-radius:12px;padding:27px 29px;position:relative;transition:border-color .2s}.card:target{border-color:var(--accent)}.card-top{display:flex;align-items:center;justify-content:space-between}.num{color:var(--muted);font:11px ui-monospace,monospace;letter-spacing:1px}.symbol{width:88px;height:36px;stroke:var(--accent);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}h2{font-size:25px;letter-spacing:1px;font-weight:550;margin:14px 0 6px}.en{font:10px ui-monospace,monospace;letter-spacing:2px;color:var(--muted)}.placeholder{border-top:1px solid #e9ece5;margin-top:23px;padding-top:20px}.skeleton{height:5px;border-radius:2px;background:#eff1eb;width:65%;margin-bottom:10px}.skeleton.short{width:43%}.empty-label{font-size:11px;color:#9aa49b;margin-top:19px}.foot{margin-top:32px;padding-top:19px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:10px;color:var(--muted);letter-spacing:.5px}footer span:last-child{font-family:ui-monospace,monospace}.card:nth-child(2) .symbol{stroke:#9a8150}.card:nth-child(3) .symbol{stroke:#6a8494}.card:nth-child(4) .symbol{stroke:#8f7c8f}@media(min-width:1400px){main{padding-top:74px}}@media(max-width:600px){header{height:68px}.edition{display:none}main{padding-top:36px}.hero{align-items:start;flex-direction:column;gap:20px;padding-bottom:25px}h1{letter-spacing:-1px}.grid{grid-template-columns:1fr;gap:14px}nav{justify-content:space-between;gap:0}nav a{padding:9px 10px}nav span{display:none}.card{min-height:280px;padding:24px}.foot{gap:20px;line-height:1.7}}
+
+.notes{margin-top:28px;border-top:1px solid var(--line);padding-top:28px}.note-heading{margin:0 0 24px}.note-heading>span{font:10px ui-monospace,monospace;letter-spacing:1.5px;color:var(--accent)}h3{font-size:23px;font-weight:550;margin:12px 0}h4{font-size:16px;font-weight:600;margin:0 0 14px}.notes p,.notes li{font-size:14px;line-height:1.9;color:#4e625b}.notes p{margin:10px 0}.note-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.note-grid article{border:1px solid #e5e9e0;padding:23px;border-radius:8px}.formula{font-family:ui-monospace,monospace;font-size:14px;line-height:1.7;padding:14px 17px;background:#eef2e9;border-radius:5px;margin:15px 0;overflow-wrap:anywhere}.notes .small{font-size:12px;color:#7a857d}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:12px;line-height:1.8;text-align:left;margin:14px 0}caption{text-align:left;color:var(--muted);font-size:11px;margin-bottom:8px}th,td{padding:11px 9px;border-bottom:1px solid var(--line);vertical-align:top}th{font-weight:600;background:#f3f5ee}.takeaways{background:#edf2e8;border-left:3px solid #69876c;padding:24px;margin:28px 0 38px;border-radius:0 8px 8px 0}.takeaways ol{padding-left:22px;margin-bottom:0}.takeaways li+li{margin-top:10px}.example{border:1px solid var(--line);padding:26px;border-radius:8px}.circuit{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:24px 0;margin:10px 0;flex-wrap:wrap}.circuit div{text-align:center;font-size:13px;line-height:1.6}.circuit small{display:block;font:11px ui-monospace,monospace;color:var(--muted);margin-top:7px}.res-block{border:1px solid #9cad98;background:#f0f4ea;border-radius:6px;padding:15px}.circuit>span{color:#91a18d}.notes .sources{font-size:11px;border-top:1px solid var(--line);padding-top:17px;margin-top:20px}.sources a{text-decoration:underline;text-underline-offset:3px}@media(max-width:700px){.note-grid{grid-template-columns:1fr}.example{padding:17px}.note-grid article{padding:19px}.circuit{justify-content:center}.circuit div{min-width:90px}.notes h3{font-size:21px}}
+.impedance-figure{margin:28px 0;padding:25px;border:1px solid var(--line);border-radius:8px;background:#fcfdf8}.impedance-chart{display:block;width:100%;height:auto;min-width:460px}.impedance-figure{overflow-x:auto}.curve-legend{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;color:var(--muted);font-size:11px;margin:4px 0 20px}.curve-legend span{display:flex;align-items:center;gap:8px}.curve-legend i{width:22px;display:inline-block}.solid-key{border-top:3px solid #386c59}.dash-key{border-top:2px dashed #9aaa9e}.curve-points{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;border-top:1px solid var(--line);padding-top:12px}.notes .curve-points p{font-size:12px}.impedance-figure figcaption{font-size:11px;line-height:1.8;color:var(--muted);padding-top:14px;border-top:1px solid var(--line);margin-top:12px}@media(max-width:700px){.impedance-figure{padding:16px}.curve-points{grid-template-columns:1fr;gap:0}.impedance-chart{min-width:0}.curve-legend{gap:10px}}</style>
+</head>
+<body>
+<header><a class="brand" href="#top"><span class="mark" aria-hidden="true">⌁</span>高速硬件学习笔记</a><span class="edition">HARDWARE / KNOWLEDGE SPACE</span></header>
+<main id="top"><div class="eyebrow">02 / PASSIVE COMPONENTS</div><div class="hero"><div><h1>从器件开始，理解电路。</h1><p class="subtitle">无源器件选型与应用 · 四个知识板块</p></div><span class="badge">电阻 · 电容笔记已更新</span></div>
+<nav role="tablist" aria-label="器件板块"><a href="#resistor" role="tab" id="tab-resistor" aria-controls="resistor" aria-selected="true" tabindex="0"><span>01</span>电阻</a><a href="#capacitor" role="tab" id="tab-capacitor" aria-controls="capacitor" aria-selected="false" tabindex="-1"><span>02</span>电容</a><a href="#inductor" role="tab" id="tab-inductor" aria-controls="inductor" aria-selected="false" tabindex="-1"><span>03</span>电感</a><a href="#ferrite" role="tab" id="tab-ferrite" aria-controls="ferrite" aria-selected="false" tabindex="-1"><span>04</span>磁珠</a></nav>
+<div class="grid">
+<section class="card" id="resistor" role="tabpanel" tabindex="0" aria-labelledby="tab-resistor"><div class="card-top"><span class="num">01 / R</span><svg class="symbol" viewBox="0 0 88 36" aria-hidden="true"><path d="M4 18h18l4-9 8 18 8-18 8 18 8-18 4 9h22"/></svg></div><h2 id="r-title">电阻</h2><div class="en">RESISTOR</div><div class="notes">
+<div class="note-heading"><span>01 / APPLICATION NOTES</span><h3>电阻应用的四个关注点</h3><p>从阻值、封装尺寸、额定功率和精度四个方面检查选型。</p></div>
+<div class="note-grid">
+<article><h4>阻值 · 满足功能与供货需求</h4><p>先按电路要求计算阻值，再选择常用系列。遇到不常用的阻值，可评估用常见电阻串联或并联实现，同时核算误差、功耗和占板面积。</p><div class="formula">363 Ω = 330 Ω + 33 Ω</div><p class="small">这是标称值组合示例，实际阻值仍受各电阻容差影响。</p></article>
+<article><h4>封装 · 区分英制与公制</h4><p>相同的四位代码可能使用不同单位。核对器件手册与 PCB 封装库，不能只凭“0603”选封装。</p><div class="table-wrap"><table><caption>常见英制 / 公制封装对应关系</caption><thead><tr><th>英制代码</th><th>公制代码</th><th>标称尺寸</th></tr></thead><tbody><tr><td>1206</td><td>3216</td><td>3.2 × 1.6 mm</td></tr><tr><td>0805</td><td>2012</td><td>2.0 × 1.2 mm</td></tr><tr><td>0603</td><td>1608</td><td>1.6 × 0.8 mm</td></tr></tbody></table></div></article>
+<article><h4>功率 · 留出降额余量</h4><p>串在高功耗路径上的电阻容易被忽略。用电阻上的实际电压或电流计算耗散功率，再检查额定功率与温度降额曲线。</p><div class="formula">P = I²R = V² / R</div><p>学习基线：至少预留 20% 的降额，即工作功耗不超过适用额定功率的 80%。高温、脉冲及散热条件还需按器件规格进一步核算。</p></article>
+<article><h4>精度 · 直接影响设定参数</h4><p>当电阻用于设定电源输出等工作参数时，应按系统误差预算选择精度。以 LT3080 的简化关系为例：</p><div class="formula">V<sub>OUT</sub> ≈ R<sub>SET</sub> × 10 μA</div><p>只考虑电阻容差，±5% 对应约 ±5% 的输出偏差，最大与最小值的总跨度为标称值的 10%；±1% 对应约 ±1% 的偏差，总跨度为 2%。</p><p class="small">这不是输出纹波，也不包含设定电流误差、温漂等其他误差。1% 是否足够仍取决于电路要求。</p></article>
+</div>
+<aside class="takeaways"><span class="eyebrow">KEY TAKEAWAYS</span><h3>理解要点</h3><ol><li><strong>0 Ω 电阻有工程价值：</strong>可用于连接配置、隔离调试和预留串联调节位置。</li><li><strong>高功耗路径核算额定功率：</strong>不能只看阻值，还要看发热、温度和降额。</li><li><strong>参数设定关注精度：</strong>电阻容差会传递到器件的工作参数中。</li></ol></aside>
+<div class="note-heading"><span>02 / WORKED EXAMPLE</span><h3>0 Ω 电阻，对高速信号有什么意义？</h3><p>下面是用于理解原理的假设设计例子，数值不是某款器件的推荐配置。</p></div>
+<div class="example"><h4>例子：给一条单端时钟线留下调试余地</h4><p>假设时钟驱动器输出阻抗约为 18 Ω，PCB 走线特性阻抗为 50 Ω，接收端为高阻输入，且边沿足够快、走线足够长，需要按传输线处理。在驱动端附近预留一个串联电阻焊盘，初版先装 0 Ω。</p>
+<div class="circuit" role="img" aria-label="时钟驱动器，输出阻抗18欧姆，串联电阻R，50欧姆走线，高阻接收端"><div>时钟驱动器<small>Rout ≈ 18 Ω</small></div><span>→</span><div class="res-block">串联电阻 R<small>0 Ω / 33 Ω</small></div><span>→</span><div>PCB 走线<small>Z₀ = 50 Ω</small></div><span>→</span><div>接收端<small>高阻输入</small></div></div>
+<div class="table-wrap"><table><thead><tr><th>装配选择</th><th>源端阻抗近似值</th><th>意义</th></tr></thead><tbody><tr><td>先装 0 Ω</td><td>18 + 0 ≈ 18 Ω</td><td>保持连通并保留修改位置；本例中尚未实现源端匹配。</td></tr><tr><td>换装 33 Ω</td><td>18 + 33 ≈ 51 Ω</td><td>接近 50 Ω 走线阻抗，有助于吸收返回源端的反射，减轻反复反射造成的振铃。</td></tr><tr><td>拆下电阻</td><td>通路断开</td><td>便于隔离驱动端与后级，检查故障来源。</td></tr></tbody></table></div>
+<div class="formula">串联匹配的估算：R ≈ Z₀ − R<sub>OUT</sub> = 50 − 18 = 32 Ω → 评估常用值 33 Ω</div>
+<p><strong>0 Ω 的意义在于可调整的连接位置。</strong>若实测波形和时序已满足要求，可以保留 0 Ω；若有过冲、下冲或振铃，可在同一位置更换适当阻值，再检查接收端波形与时序裕量。焊盘应靠近信号源，并避免分支残桩。</p>
+<p class="small">实物 0 Ω 电阻有有限的直流电阻及寄生参数；焊盘也会引入不连续。它不是理想导线，也不能保证改善高速信号。选型需核对电流规格；超高速差分接口应遵循对应接口与芯片的布局、端接规范。</p>
+<p class="sources">扩展依据：<a href="https://www.sitime.com/support/resource-library/application-notes/an10002-termination-recommendations-single-ended" target="_blank" rel="noopener">SiTime AN10002 · 单端时钟串联端接</a>；<a href="https://www.vishay.com/docs/20103/geninfo.pdf" target="_blank" rel="noopener">Vishay · 电阻额定参数与高频特性</a>。数值例子为基于端接原理的演算。</p></div>
+</div>
+</section>
+<section class="card" id="capacitor" role="tabpanel" tabindex="0" aria-labelledby="tab-capacitor"><div class="card-top"><span class="num">02 / C</span><svg class="symbol" viewBox="0 0 88 36" aria-hidden="true"><path d="M4 18h34m0-12v24m12-24v24m0-12h34"/></svg></div><h2 id="c-title">电容</h2><div class="en">CAPACITOR</div><div class="notes">
+<div class="note-heading"><span>2.2.2 / FUNCTION &amp; MODEL</span><h3>电容的作用与等效模型</h3><p>理解实际电容，要同时考虑储能作用、寄生参数及其随频率变化的阻抗。</p></div>
+<div class="note-grid">
+<article><h4>三个主要作用</h4><ul><li><strong>电荷缓冲：</strong>通过储存和释放电荷，支撑负载瞬态电流，减小供电电压变化。</li><li><strong>高频噪声回路：</strong>在适用频带内，为噪声提供低阻抗回流通路，降低电源干扰。</li><li><strong>交流耦合：</strong>隔离收发两端的直流偏置，同时传递所需交流信号；容量选择要满足信号低频成分及接口要求。</li></ul><div class="formula">ΔV = ΔQ / C<br>Z<sub>C,ideal</sub> = 1 / (jωC)，ω = 2πf</div><p class="small">理想电容公式不能覆盖实际器件在全部频段的表现。</p></article>
+<article><h4>实际电容包含哪些参数？</h4><div class="table-wrap"><table><thead><tr><th>参数</th><th>含义与影响</th></tr></thead><tbody><tr><td>C</td><td>有效电容量，决定储能与容性阻抗。</td></tr><tr><td>ESL</td><td>等效串联电感，与结构、封装及安装连接有关，限制高频性能。</td></tr><tr><td>ESR</td><td>等效串联电阻，随频率、温度及材料等变化，影响损耗和最低阻抗。</td></tr><tr><td>R<sub>leak</sub></td><td>等效并联漏电阻，表征电容的漏电通路。</td></tr></tbody></table></div><p>选型不能只看 μF 值，还要看工作频段下的阻抗与器件规格。</p></article>
+<article><h4>读懂阻抗—频率曲线</h4><ul><li><strong>自谐振频率以下：</strong>容性为主，频率升高时阻抗通常下降。</li><li><strong>自谐振附近：</strong>C 与 ESL 的电抗抵消，简化串联模型中的阻抗最低，约由 ESR 决定。</li><li><strong>自谐振频率以上：</strong>感性为主，ESL 使阻抗随频率上升。</li></ul><div class="formula">f<sub>SR</sub> ≈ 1 / (2π√(ESL × C))</div><p class="small">这里 f 为 Hz；角频率关系为 ω<sub>SR</sub> = 1 / √(ESL × C)。</p></article>
+<article><h4>容量与封装需要一起搭配</h4><ul><li>目标是在噪声频带内保持足够低的阻抗，而不是单纯增加标称容量。</li><li>小封装、短电流路径及反向几何结构可用于降低 ESL；具体数值应查器件资料。</li><li>相同电容并联可提高总容量并降低阻抗，但不等于低阻抗频带一定拓宽。</li><li>不同电容的组合需同时比较容量、ESL、ESR 与安装条件，不能只按“大容量管低频、小容量管高频”判断。</li></ul></article>
+</div>
+<figure class="impedance-figure" aria-labelledby="impedance-title">
+<div class="note-heading"><span>IMPEDANCE VS. FREQUENCY</span><h3 id="impedance-title">电容阻抗—频率曲线</h3><p>单颗实际电容的简化示意：频率升高时，阻抗先下降，在自谐振附近达到最低，再逐渐上升。</p></div>
+<svg viewBox="0 0 900 420" role="img" aria-labelledby="z-title z-desc" class="impedance-chart">
+<title id="z-title">电容阻抗随频率变化的示意图</title><desc id="z-desc">横轴为频率对数轴，纵轴为阻抗幅值对数轴。左侧容性区由电容量主导，曲线下降；中间自谐振点的最低阻抗约为等效串联电阻 ESR；右侧感性区由等效串联电感 ESL 主导，曲线上升。图中没有实际测量数据。</desc>
+<defs><marker id="axis-arrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0L6 3L0 6" fill="none" stroke="#82948b" stroke-width="1.2"/></marker></defs>
+<rect x="88" y="55" width="370" height="270" fill="#edf3e9" rx="5"/><rect x="458" y="55" width="330" height="270" fill="#eef2f5" rx="5"/>
+<g stroke="#dce4dc" stroke-width="1"><path d="M88 120H788M88 185H788M88 250H788"/><path d="M210 55V325M330 55V325M580 55V325M700 55V325"/></g>
+<g fill="none" stroke="#82948b" stroke-width="1.5" marker-end="url(#axis-arrow)"><path d="M88 325V40"/><path d="M88 325H811"/></g>
+<g font-family="-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif" fill="#52685d" font-size="14"><text x="88" y="26">阻抗幅值 |Z|（对数）</text><text x="655" y="373">频率 f（对数）</text><text x="185" y="84" fill="#547346">容性区 · C 主导</text><text x="573" y="84" fill="#5b7a8b">感性区 · ESL 主导</text></g>
+<path d="M120 105L408 287M505 287L758 105" stroke="#9aaa9e" stroke-width="1.8" stroke-dasharray="6 6" fill="none"/>
+<path d="M120 105C222 167 330 242 406 284C428 297 443 302 458 302C474 302 491 297 511 284C590 233 675 166 758 105" fill="none" stroke="#386c59" stroke-width="4" stroke-linecap="round"/>
+<path d="M458 101V325M88 302H458" fill="none" stroke="#a6b3a1" stroke-width="1.5" stroke-dasharray="5 5"/>
+<circle cx="458" cy="302" r="6" fill="#386c59" stroke="#fffefa" stroke-width="3"/>
+<g font-family="-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif" font-size="13" fill="#52685d"><text x="150" y="214">|Z| ≈ 1 / (2πfC)</text><text x="595" y="214">|Z| ≈ 2πf · ESL</text><text x="98" y="291">最低阻抗 ≈ ESR</text><text x="458" y="350" text-anchor="middle" fill="#386c59">fSR · 自谐振频率</text></g>
+<rect x="350" y="111" width="216" height="58" rx="6" fill="#fffefa" stroke="#dce3de"/><text x="458" y="135" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif" font-size="13" fill="#386c59">C 与 ESL 的电抗抵消</text><text x="458" y="155" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12" fill="#7e8c88">fSR ≈ 1 / (2π√(ESL × C))</text>
+</svg>
+<div class="curve-legend"><span><i class="solid-key"></i>实际电容的简化阻抗趋势</span><span><i class="dash-key"></i>容性 / 感性渐近趋势</span></div>
+<div class="curve-points"><p><strong>C 决定低频侧：</strong>在其他条件不变时，容量越大，容性区阻抗越低，自谐振频率越低。</p><p><strong>ESR 决定谷底：</strong>简化模型中，自谐振点的最低阻抗约等于 ESR。</p><p><strong>ESL 决定高频侧：</strong>其他条件不变时，ESL 越小，感性区阻抗越低，自谐振频率越高。</p></div>
+<figcaption>定性示意，非实测曲线，无具体频率或阻抗刻度。实际形状受频率相关损耗、偏压、温度和安装回路影响，应以器件数据及电路验证为准。</figcaption>
+</figure>
+<div class="note-heading" style="margin-top:38px"><span>FILTERING / ESR / FREQUENCY</span><h3>滤波电容：让目标频带内的阻抗足够低</h3><p>滤波效果取决于电容所在的完整电路。容量只是其中一个参数，还需结合噪声频带、ESR、ESL、供电网络和回流路径判断。</p></div>
+<div class="note-grid">
+<article><h4>滤波电容如何起作用？</h4><p>电源与地之间的滤波电容，为交流噪声电流提供局部低阻抗回路，并通过储存、释放电荷减小电压波动。它与电源及连接路径的阻抗共同决定噪声如何分配。</p><ul><li><strong>储能角度：</strong>关注负载变化所需电荷，以及允许的电压变化。</li><li><strong>频域角度：</strong>关注整个电源网络在噪声频带内的阻抗，而非单一频率下的容量。</li><li><strong>布局角度：</strong>缩短电容、供电引脚及回流路径组成的回路，降低安装电感。</li></ul><div class="formula">ΔV ≈ ΔQ / C<br>Z<sub>target</sub> ≈ ΔV<sub>allow</sub> / ΔI</div><p class="small">目标阻抗是初步设计指标；实际瞬态还受 ESR、电感、供电控制环路及电流变化速度影响。</p></article>
+<article><h4>选型与验证顺序</h4><ol><li>明确允许的电压波动、负载电流变化和需要抑制的噪声频带。</li><li>以工作偏压、温度和容差下的有效容量评估储能需求。</li><li>查看阻抗—频率曲线，核对 ESR、ESL 和自谐振频率。</li><li>结合布局、过孔与参考平面，评估安装后的网络阻抗。</li><li>检查稳压器对容量、ESR 的要求，以及纹波电流、极性和降额条件。</li></ol><p class="small">器件本身低阻抗，并不代表焊接到 PCB 后仍能在同一频带保持相同效果。</p></article>
+<article><h4>ESR 的代价：损耗与电压波动</h4><ul><li><strong>发热：</strong>纹波电流流经 ESR 会产生损耗；简化估算为 P ≈ I<sub>ripple,rms</sub>² × ESR。</li><li><strong>瞬态压差：</strong>电容电流改变时，ESR 带来约 ΔV<sub>ESR</sub> ≈ ΔI<sub>C</sub> × ESR 的电压变化。</li><li><strong>最低阻抗：</strong>在简化串联模型中，自谐振附近的最低阻抗主要由 ESR 决定。</li><li><strong>交流耦合：</strong>ESR 是信号通路中的额外串联损耗，可能增加衰减。</li></ul><p>因此，在满足稳定性等条件时，较低 ESR 通常有利于降低供电阻抗与损耗。</p></article>
+<article><h4>ESR 的作用：稳定性与阻尼</h4><p><strong>ESR 不是越低越好。</strong>部分稳压器会利用输出电容的 ESR 形成零点，参与控制环路补偿。ESR 超出允许范围时，即使容量足够，也可能出现稳定性问题。</p><div class="formula">f<sub>zero</sub> ≈ 1 / (2π × ESR × C)</div><ul><li>按具体稳压器手册核对输出电容容量及 ESR 的允许范围。</li><li>检查 ESR 随频率、温度的变化，不能只比较一个标称值。</li><li>适当的损耗也可为谐振网络提供阻尼；过度追求低 ESR 可能让阻抗峰更尖锐。</li></ul><p class="small">ESR 零点的作用取决于控制架构；不能将某一稳压器的要求推广到全部电源。</p></article>
+</div>
+<div class="note-heading" style="margin-top:34px"><span>RULE OF THUMB / LIMITS</span><h3>“低频噪声选大电容，高频噪声选小电容”怎么理解？</h3><p>这是简化的选型经验。它在只看容量时容易理解，但实际应用还必须考虑封装与寄生参数。</p></div>
+<div class="note-grid">
+<article><h4>低频选大容量：储能与容性阻抗</h4><p>在容性区，同一频率下 C 越大，理想容抗 1 / (2πfC) 越小；较大有效容量也能提供更多电荷储备。因此，大容量器件常承担较慢负载变化的储能和较低频滤波。</p><p>前提是器件在目标频段仍有合适的阻抗，且容量、纹波与温度性能满足要求。不能只凭“容量大”判定整个频段的滤波能力。</p></article>
+<article><h4>高频选小容量：关键是 ESL 与安装</h4><p>当 ESL 相同时，减小 C 会提高自谐振频率。但在远高于自谐振的感性区，阻抗近似为 2πf × ESL，主要取决于 ESL，而不是容量。</p><p><strong>小容量并不自动等于高频性能更好。</strong>如果封装和 ESL 接近，小容量电容不一定优于大容量电容；更低 ESL 的结构、较小回路和合理安装往往更关键。</p></article>
+<article><h4>并联：不能只看容量组合</h4><ul><li><strong>同型号并联：</strong>理想情况下可增加容量、降低等效阻抗；自谐振频率不因数量增加而必然提高。</li><li><strong>不同器件并联：</strong>可能覆盖不同频段，但需联合考虑容量、ESL、ESR 与安装参数。</li><li><strong>检查反谐振：</strong>并联网络中，一支路呈感性、另一支路呈容性时，可能出现额外的高阻抗峰。</li></ul><p>是否拓宽了低阻抗频带，应看组合后的网络阻抗，不能仅凭“大、小电容各放一颗”判断。</p></article>
+<article><h4>更可靠的选择原则</h4><p><strong>低频侧重有效容量，高频侧重低电感，全频段检查网络阻抗。</strong></p><ul><li>大容量负责储能是否充足，小回路负责快速电流能否及时流动。</li><li>用阻抗曲线判断目标噪声频带是否被覆盖。</li><li>同时核对稳压器稳定性与并联网络的谐振峰。</li><li>最终结合器件资料、仿真或测量确认效果。</li></ul></article>
+</div>
+<p class="sources">扩展阅读：<a href="https://www.ti.com/document-viewer/lit/html/SSZTBJ1" target="_blank" rel="noopener">TI · 输出电容 ESR 与稳压器稳定性</a>；<a href="https://www.murata.com/en-GB/products/emc/emifil/library/knowhow/basic/chapter03-p3" target="_blank" rel="noopener">Murata · 电容并联与反谐振</a>。</p><aside class="takeaways"><span class="eyebrow">DATASHEET CHECKLIST</span><h3>电容手册应核对的参数</h3><p>尺寸与料号、额定电压、有效容量、ESR 的测试频率与温度、额定纹波电流、损耗角正切 tan δ，以及漏电流。</p><p><strong>ESR 并非越小越好：</strong>低 ESR 通常有利于降低损耗和供电阻抗，但部分稳压器对输出电容 ESR 有稳定性要求，必须满足芯片规定的范围。</p><p class="small">额定纹波电流描述规定条件下的交流电流承受能力，不能直接当作浪涌电流额定值。</p></aside>
+<div class="note-heading"><span>2.2.3 / TYPES &amp; SELECTION</span><h3>常见电容及应用要点</h3><p>按极性、有效容量、频率特性、温度表现和瞬态承受能力选择，并结合具体器件数据。</p></div>
+<div class="table-wrap"><table><caption>四类常见器件的学习对照</caption><thead><tr><th>类型</th><th>主要特点</th><th>应用关注点</th></tr></thead><tbody><tr><td>陶瓷电容</td><td>无极性，贴片结构通常有较低 ESR / ESL，适合局部去耦与高频旁路。</td><td>介质类别、温度特性、直流偏压下的有效容量及封装。</td></tr><tr><td>钽电容</td><td>有极性，可提供较大容量，适用于相应频段的储能和滤波。</td><td>严格核对电压降额、极性、浪涌与上电条件，尤其注意低源阻抗和热插拔。</td></tr><tr><td>铝电解电容</td><td>常规有极性液态电解器件容量较大，适合储能与较低频滤波。</td><td>ESR / ESL、低温性能、纹波发热和寿命；高频与长期性能受具体系列限制。</td></tr><tr><td>OS-CON 系列</td><td>品牌系列名称，并非独立的介质分类；强调低 ESR 和较好的温度表现。</td><td>按具体系列核对极性、耐压、纹波能力、封装和尺寸，不能只凭品牌直接替换。</td></tr></tbody></table></div>
+<div class="note-grid" style="margin-top:24px">
+<article><h4>陶瓷介质：稳定性有差别</h4><div class="table-wrap"><table><thead><tr><th>介质</th><th>温度范围</th><th>容量温度特性</th></tr></thead><tbody><tr><td>NP0 / C0G</td><td>按器件规格核对</td><td>温度稳定性高，适合稳定性要求较高的应用。</td></tr><tr><td>X7R</td><td>−55～+125 °C</td><td>规定条件下约 ±15%。</td></tr><tr><td>X5R</td><td>−55～+85 °C</td><td>规定条件下约 ±15%。</td></tr><tr><td>Y5V</td><td>−30～+85 °C</td><td>规定条件下 +22% / −82%，变化范围较大。</td></tr></tbody></table></div><p class="small">温度特性代码不代表初始容差，也不保证直流偏压下仍有标称容量。</p></article>
+<article><h4>按有效容量做设计</h4><ul><li>标称容量是在规定测试条件下得到的值，工作电压和温度改变后，有效容量可能下降。</li><li>X7R、X5R 仍需检查直流偏压特性；Y5V 的变化更大，不宜依赖其标称值保证高速电路去耦。</li><li>资料中的“至少留 20% 余量”可作为学习起点，但不能替代对具体器件容量曲线的检查。</li><li>以最不利工作条件下的有效容量核对电路需求，同时预留容差与老化余量。</li></ul></article>
+<article><h4>钽电容：重点控制瞬态应力</h4><ul><li>电压降额和浪涌能力是选型重点，不能因 ESR 低、容量大而忽略可靠性。</li><li>资料对传统钽电容提出较保守的降额思路：一般工作电压不高于额定值的 50%；强感性、低串联阻抗或大瞬态条件下，进一步降至约 30% 或以下。</li><li>这些比例须结合具体技术路线和厂家要求判断；热插拔、上电、测试与老化过程都需要检查。</li><li>同时权衡容量、ESR、耐压、面积和成本。</li></ul></article>
+<article><h4>铝电解与 OS-CON：关注温度和寿命</h4><ul><li>液态铝电解在低温下 ESR 可能明显升高；高温和纹波发热会影响寿命。</li><li>随老化，有效容量可能下降、ESR 可能增大，需评估全寿命内的滤波能力。</li><li>铝电解的电压余量也需检查，资料给出的至少 20% 降额不能替代温度、纹波与寿命评估。</li><li>OS-CON 的低 ESR 特性可用于相应电源滤波，但需确认稳压器稳定性及具体规格兼容。</li></ul></article>
+</div>
+<div class="note-heading" style="margin-top:38px"><span>2.2.4 / DECOUPLING &amp; BYPASS</span><h3>去耦电容与旁路电容</h3><p>这两个名称描述电容的用途，不是两种不同的电容材料或器件类型。</p></div>
+<div class="note-grid">
+<article><h4>去耦 · 支撑本地负载</h4><ul><li>作为器件附近的本地电荷储备，快速补充负载变化所需的瞬态电流。</li><li>为器件自身产生的高频电流提供局部回路，减轻其对共用电源及其他负载的影响。</li><li>重点关注电源引脚附近的布置和完整电流回路的低阻抗。</li></ul></article>
+<article><h4>旁路 · 分流外来噪声</h4><ul><li>为前级电源等带来的高频噪声提供低阻抗通路，减少噪声进入被供电器件。</li><li>在适用频带内将干扰电流引向参考地回路。</li><li>同一颗电容可以同时承担旁路与去耦作用，两者没有严格的器件边界。</li></ul></article>
+</div>
+<aside class="takeaways"><span class="eyebrow">KEY TAKEAWAYS</span><h3>电容选型的核心顺序</h3><ol><li><strong>先明确用途：</strong>储能、滤波、去耦、旁路或交流耦合。</li><li><strong>再看工作条件：</strong>电压、温度、噪声频带、纹波与瞬态电流。</li><li><strong>核对真实器件：</strong>有效容量、ESR、ESL、极性、封装、降额及寿命。</li><li><strong>最后检查安装效果：</strong>结合布线和回流路径评估整个网络的阻抗。</li></ol></aside>
+</div>
+</section>
+<section class="card" id="inductor" role="tabpanel" tabindex="0" aria-labelledby="tab-inductor"><div class="card-top"><span class="num">03 / L</span><svg class="symbol" viewBox="0 0 88 36" aria-hidden="true"><path d="M4 22h16c0-18 12-18 12 0 0-18 12-18 12 0 0-18 12-18 12 0 0-18 12-18 12 0h16"/></svg></div><h2 id="l-title">电感</h2><div class="en">INDUCTOR</div><div class="placeholder"><div class="skeleton"></div><div class="skeleton short"></div><div class="empty-label">笔记内容待填充</div></div></section>
+<section class="card" id="ferrite" role="tabpanel" tabindex="0" aria-labelledby="tab-ferrite"><div class="card-top"><span class="num">04 / FB</span><svg class="symbol" viewBox="0 0 88 36" aria-hidden="true"><path d="M4 18h25m30 0h25"/><rect x="29" y="8" width="30" height="20" rx="4"/><path d="M39 8v20m10-20v20"/></svg></div><h2 id="f-title">磁珠</h2><div class="en">FERRITE BEAD</div><div class="placeholder"><div class="skeleton"></div><div class="skeleton short"></div><div class="empty-label">笔记内容待填充</div></div></section>
+</div><footer class="foot"><span>高速硬件学习笔记 / 无源器件</span><span>LEARNING NOTES · V0.4</span></footer></main>
+<script>
+const tabs = [...document.querySelectorAll('[role="tab"]')];
+function showPanel(id) {
+  if (!tabs.some(tab => tab.getAttribute('aria-controls') === id)) id = 'resistor';
+  tabs.forEach(tab => {
+    const active = tab.getAttribute('aria-controls') === id;
+    tab.setAttribute('aria-selected', String(active));
+    tab.tabIndex = active ? 0 : -1;
+    document.getElementById(tab.getAttribute('aria-controls')).hidden = !active;
+  });
+}
+tabs.forEach((tab, index) => {
+  tab.addEventListener('click', event => {
+    event.preventDefault();
+    const id = tab.getAttribute('aria-controls');
+    history.replaceState(null, '', '#' + id);
+    showPanel(id);
+  });
+  tab.addEventListener('keydown', event => {
+    let next;
+    if (event.key === 'ArrowRight') next = (index + 1) % tabs.length;
+    else if (event.key === 'ArrowLeft') next = (index - 1 + tabs.length) % tabs.length;
+    else if (event.key === 'Home') next = 0;
+    else if (event.key === 'End') next = tabs.length - 1;
+    else return;
+    event.preventDefault();
+    tabs[next].focus();
+    tabs[next].click();
+  });
+});
+window.addEventListener('hashchange', () => showPanel(location.hash.slice(1)));
+showPanel(location.hash.slice(1));
+</script>
+</body></html>

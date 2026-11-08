@@ -11,3 +11,9 @@
 - [复位与时钟设计](./06-reset-and-clock/)
 - [存储器应用与设计](./07-memory-design/)
 - [PCB 与完整性设计](./08-pcb-and-integrity/)
+
+## 网页笔记
+
+[无源器件网页笔记](./02-passive-components/index.html)：按电阻、电容、电感、磁珠四个板块切换阅读。已整理电阻与电容内容，电感和磁珠待补充。
+
+下载 HTML 文件后用浏览器打开即可使用。GitHub 文件页面展示源码，尚未配置网页托管。
